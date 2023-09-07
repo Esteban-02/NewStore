@@ -1,10 +1,9 @@
 package co.edu.uniquindio.tienda.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,5 +25,8 @@ public class Producto {
     private float precio;
 
     private TipoProducto tipoProducto;
+
+    @OneToMany(mappedBy = "producto")
+    private List<TransaccionProducto> transaccionProductos;
 
 }

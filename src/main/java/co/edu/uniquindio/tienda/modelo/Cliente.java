@@ -2,27 +2,22 @@ package co.edu.uniquindio.tienda.modelo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Cliente implements Serializable {
+public class Cliente extends Persona implements Serializable {
 
-    @Id
-    @EqualsAndHashCode.Include
-    private String cedula;
+    private String telefono;
 
-    @Getter
-    private String nombre;
-
-    private String email, telefono;
-
+    @OneToMany(mappedBy = "cliente")
+    private List<Transaccion> transacciones;
 }

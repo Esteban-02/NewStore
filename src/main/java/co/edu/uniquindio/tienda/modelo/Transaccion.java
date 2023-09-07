@@ -1,13 +1,11 @@
 package co.edu.uniquindio.tienda.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,6 +22,13 @@ public class Transaccion implements Serializable {
 
     private LocalDateTime fecha;
 
+    @ManyToOne
+    private Cliente cliente;
 
+    @OneToOne
+    private Pago pago;
+
+    @OneToMany(mappedBy = "transaccion")
+    private List<TransaccionProducto> transaccionProductos;
 
 }

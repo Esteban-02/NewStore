@@ -27,4 +27,7 @@ public class Pago implements Serializable {
 
     private MedioPago medioPago;
 
+    @OneToOne(mappedBy = "pago")
+    private Transaccion transaccion;
+
 }
